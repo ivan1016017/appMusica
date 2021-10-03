@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-10 text-start">
+              <label class="fs-2">Álbumes</label>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="my-1 btn btn-primary btn-circle" (click)="irCrearAlbum()"><i class="bi bi-plus-lg"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="input-group my-2">
+            <input #busqueda type="text" class="form-control" placeholder="Buscar álbumes" aria-label="Search" (keyup)="buscarAlbum(busqueda.value)">
+          </div>
+
+
+          <div class="form-check">
+            <label class="form-check-label" for="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="titulo" (change)="radioChangeHandler($event)" checked>
+              Filtar por titulo
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="flexRadioDefault2">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="interprete" (change)="radioChangeHandler($event)"  >
+              Filtar por interprete
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="flexRadioDefault3">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="genero" (change)="radioChangeHandler($event)"  >
+              Filtar por genero
+            </label>
+          </div>
+
+
+
+          <table class="table table-hover mb-0 mt-4" aria-describedby="colecName">
+            <tbody>
+                <tr *ngFor="let album of mostrarAlbumes; index as i" (click)="onSelect(album, i)" [ngClass]="{'selected': i === indiceSeleccionado}">
+                  <td >{{album.titulo}}</td>
+                  <td >{{album.anio}}</td>
+                  <td class="text-end">
+                    <i *ngIf="album.es_compartido" class="bi bi-share-fill"></i>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <app-album-detail (deleteAlbum)="eliminarAlbum()" [album]="albumSeleccionado" [cancionGeneroSeleccionado]="albumCancionGeneroSeleccionado"></app-album-detail>
+    </div>
+  </div>
+</div>

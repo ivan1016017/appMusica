@@ -1,0 +1,14 @@
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 px-lg-5 mb-3 bg-white border-bottom box-shadow">
+  <h4 class="my-0 mr-md-auto font-weight-normal logo">
+    <a class="text-primary text-decoration-none" routerLink="/">
+      <img alt="Logo Ionic" class="logo mr-1" src="./assets/images/logo.png">
+    </a>
+  </h4>
+  <nav class="mr-4">
+    <a routerLinkActive="active" (click)="goTo('album')" class="cursor-pointer p-2 text-decoration-none text-secondary font-weight-bold">Álbumes</a>
+    <a routerLinkActive="active" (click)="goTo('cancion')" class="cursor-pointer p-2 text-decoration-none text-secondary font-weight-bold">Canciones</a>
+  </nav>
+  <a class="p-2 text-decoration-none text-secondary font-weight-bold cursor-pointer" (click)="goTo('logIn')">
+    Salir <em class="bi bi-arrow-bar-right"></em>
+  </a>
+</header>

@@ -1,0 +1,38 @@
+@import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
+
+.container{
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.0025em;
+}
+
+.title{
+  font-family: Bodoni Bk BT;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  /* 1st */
+  color: #0B0C10;
+  }
+  .title-span{
+  letter-spacing: 0.0025em;
+  /* 1st_Dark */
+  color: #060609;
+  opacity: 0.7;
+  }
+
+  .es-album-compartido {
+    opacity: 0.8;
+    cursor: pointer;
+
+  }
+  .es-album-compartido::before{
+    content: "\f1e1";
+    font-family: 'Font Awesome\ 5 Free';
+    background-color: transparent;
+    padding-right: 0.1em;
+    font-size:1.1em;
+
+  }

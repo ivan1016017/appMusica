@@ -1,0 +1,72 @@
+@import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
+
+.container{
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.0025em;
+}
+
+.title{
+font-family: Bodoni Bk BT;
+font-style: normal;
+font-weight: normal;
+text-transform: capitalize;
+font-feature-settings: 'pnum' on, 'lnum' on;
+/* 1st */
+color: #0B0C10;
+}
+.title-span{
+letter-spacing: 0.0025em;
+/* 1st_Dark */
+color: #060609;
+opacity: 0.7;
+}
+
+
+.c-heart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+.c-heart-icon:hover{
+  filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
+  font-size: 28px;
+  transition: 0.3s;
+  opacity: 1;
+
+}
+
+.c-heart-icon-fill {
+  font-size: 25px;
+  cursor: pointer;
+  color: #0B0C10;
+}
+.c-heart-icon-fill:hover{
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+  font-size: 28px;
+  transition: 0.3s;
+}
+
+.es-cancion-compartida {
+  opacity: 0.8;
+  cursor: pointer;
+
+}
+.es-cancion-compartida::before{
+  content: "\f1e1";
+  font-family: 'Font Awesome\ 5 Free';
+  background-color: transparent;
+  padding-right: 0.1em;
+  font-size:1.1em;
+
+}
+
+.buttons{
+  display: inline-flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+
+
+

@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="card mx-3 my-5">
+          <div class="row">
+            <div class="col-12 text-center">
+              <p class="mt-5 mb-2 fs-3 fw-bold">Compartir Canción</p>
+            </div>
+          </div>
+          <form class="mx-5 my-3" [formGroup]="cancionUserForm" (ngSubmit)="asociarUsuario()">
+
+            <div class="form-group my-2">
+              <div class="row">
+                <div class="col-2 text-start">
+                  <label>Canción</label>
+                </div>
+                <div class="col-10">
+                  <input type="text" class="form-control" formControlName="tituloCancion" placeholder="Titulo de la cancion" [readonly]="true" >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group my-2">
+              <div class=" row">
+                <div class="col-2 text-start">
+                  <label for="medio">Usuario </label>
+                </div>
+                <div class="col-10">
+                  <select #usuario class="form-select" formControlName="nombreUsuario" (change)="onSelect(usuario.value)">
+                    <option value="" disabled>Seleccione el usuario con el que quiere compartir la canción</option>
+                    <option *ngFor="let user of users" value={{user.id}}>{{user.nombre}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-8">
+                  <div class="alert alert-danger my-3" *ngIf="cancionUserForm.get('nombreUsuario')?.hasError('required') && cancionUserForm.get('nombreUsuario')?.touched">
+                    Debe seleccionar un usuario con quien quiere compatir el canción
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mt-4">
+              <div class="col-6 text-end">
+                <button class="btn btn-danger" (click)="cancelarAsociacion()">Cancelar</button>
+              </div>
+              <div class="col-6 text-start">
+                <button type="submit" class="btn btn-primary" [disabled]="!cancionUserForm.valid">Compartir Canción</button>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

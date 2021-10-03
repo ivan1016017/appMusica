@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mb-2" >
+      <label class="fs-1 fw-bold title" [ngClass]="{'es-cancion-compartida': cancion.es_compartida}">Canción: <span class=" fs-2 title-span">{{cancion?.titulo}}</span></label>
+      <div class="buttons">
+        <button *ngIf="cancion" type="button" class="btn btn-outline-success ms-3 me-2" (click)="goToEdit()" title="Editar canción"><i class="bi bi-pencil-square"></i></button>
+        <button *ngIf="cancion" type="button" class="btn btn-outline-danger me-1" (click)="eliminarCancion()" title="Eliminar canción"><i class="bi bi-trash-fill"></i></button>
+        <button *ngIf="cancion" type="button" class="btn btn-outline-info me-1"   (click)="goToJoinUser()" title="compartir canción a coleccionista"><i class="bi bi-share-fill"></i></button>
+      </div>
+      <div *ngIf="cancion && cancion.es_favorita; else notFavorite" (click)="changeFavorite()" class='d-inline-block float-end c-heart-icon-fill'>
+        <i class="bi bi-heart-fill"></i>
+      </div>
+      <ng-template #notFavorite>
+        <div *ngIf="cancion" class='d-inline-block float-end c-heart-icon' (click)="changeFavorite()">
+          <i class="bi bi-heart"></i>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <p *ngIf="cancion && cancion.segundos<10" class="my-0"><span class="fw-bold">Duración: </span> <span class="text-capitalize">{{cancion?.minutos}}:0{{cancion?.segundos}}</span></p>
+          <p *ngIf="cancion && cancion.segundos>9" class="my-0"><span class="fw-bold">Duración: </span> <span class="text-capitalize">{{cancion?.minutos}}:{{cancion?.segundos}}</span></p>
+          <p class="my-0"><span class="fw-bold">Género: </span> <span class="text-capitalize">{{cancion?.genero?.llave}}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="my-0"><span class="fw-bold">Intérpretes: </span> <span class="text-capitalize">{{cancion?.interprete}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mt-3 mb-2 ms-2">
+      <h5>Álbumes</h5>
+    </div>
+    <div class="col-12">
+      <table class="table table-hover table-bordered" >
+        <thead class="table-light">
+          <tr>
+            <th scope="col" class="text-center">Título</th>
+            <th scope="col" class="text-center">Año</th>
+            <th scope="col" class="text-center">Medio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let album of cancion?.albumes" >
+            <td >{{album.titulo}}</td>
+            <td class="text-center">{{album.anio}}</td>
+            <td >{{album.medio?.llave}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 mt-3 mb-2 ms-2">
+      <h5>Comentarios</h5>
+      <app-cancion-comment [cancionId]="cancion.id"></app-cancion-comment>
+    </div>
+
+  </div>
+</div>
+
+
+
+
